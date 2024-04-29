@@ -1,0 +1,21 @@
+{
+    "name": "RoundsAchievements",
+    "references": [
+        "UnboundLib",
+        "ModdingUtils"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "0Harmony.dll",
+        "BepInEx.dll",
+        "Assembly-CSharp.dll",
+        "Assembly-CSharp-firstpass.dll",
+        "PhotonUnityNetworking.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
