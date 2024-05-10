@@ -1,9 +1,12 @@
-public class ACH_HYPERSONIC : ACH
+namespace RoundsAchievements.Achievements
 {
-    public new const string AchievementName = "ACH_HYPERSONIC";
-
-    public new void AddListener(RoundsAchievements roundsAchievements)
+    public class ACH_HYPERSONIC : ACH
     {
-        // TODO: Implement
+        public new const string AchievementName = "ACH_HYPERSONIC";
+
+        public new void AddListener(RoundsAchievements roundsAchievements)
+        {
+            // TODO: Implement
+        }
     }
 }

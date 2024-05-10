@@ -1,9 +1,12 @@
-public class ACH_IMPENETRABLE : ACH
+namespace RoundsAchievements.Achievements
 {
-    public new const string AchievementName = "ACH_IMPENETRABLE";
-
-    public new void AddListener(RoundsAchievements roundsAchievements)
+    public class ACH_IMPENETRABLE : ACH
     {
-        // TODO: Implement
+        public new const string AchievementName = "ACH_IMPENETRABLE";
+
+        public new void AddListener(RoundsAchievements roundsAchievements)
+        {
+            // TODO: Implement
+        }
     }
 }

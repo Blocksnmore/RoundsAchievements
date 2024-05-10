@@ -4,44 +4,47 @@ using System.Linq;
 using UnboundLib.GameModes;
 using UnityEngine;
 
-public class ACH_TITAN : ACH
+namespace RoundsAchievements.Achievements
 {
-    public new const string AchievementName = "ACH_TITAN";
-
-    public new void AddListener(RoundsAchievements roundsAchievements)
+    public class ACH_TITAN : ACH
     {
-        GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, OnCardCollect);
-    }
+        public new const string AchievementName = "ACH_TITAN";
 
-    private void Unload()
-    {
-        GameModeManager.RemoveHook(GameModeHooks.HookPlayerPickEnd, OnCardCollect);
-    }
-
-    private IEnumerator OnCardCollect(IGameModeHandler handler)
-    {
-        if (!RoundsAchievements.NotUnlockedAchievements.Contains(AchievementName))
+        public new void AddListener(RoundsAchievements roundsAchievements)
         {
-            Unload();
+            GameModeManager.AddHook(GameModeHooks.HookPlayerPickEnd, OnCardCollect);
+        }
+
+        private void Unload()
+        {
+            GameModeManager.RemoveHook(GameModeHooks.HookPlayerPickEnd, OnCardCollect);
+        }
+
+        private IEnumerator OnCardCollect(IGameModeHandler handler)
+        {
+            if (!RoundsAchievements.NotUnlockedAchievements.Contains(AchievementName))
+            {
+                Unload();
+                return new WaitForSecondsRealtime(0.1f);
+            }
+
+            IEnumerable<Player> localPlayers = PlayerManager.instance.players.Where(p => p.data.view.IsMine);
+
+            Player[] enumerable = localPlayers as Player[] ?? localPlayers.ToArray();
+
+            foreach (Player player in enumerable)
+            {
+                float playerHealth = player.data.health;
+
+                if (playerHealth >= 1000)
+                {
+                    RoundsAchievements.UnlockAchievement(AchievementName);
+                    Unload();
+                    break;
+                }
+            }
+
             return new WaitForSecondsRealtime(0.1f);
         }
-        
-        IEnumerable<Player> localPlayers = PlayerManager.instance.players.Where(p => p.data.view.IsMine);
-
-        Player[] enumerable = localPlayers as Player[] ?? localPlayers.ToArray();
-
-        foreach (Player player in enumerable)
-        {
-            float playerHealth = player.data.health;
-            
-            if (playerHealth >= 1000)
-            {
-                RoundsAchievements.UnlockAchievement(AchievementName);
-                Unload();
-                break;
-            }
-        }
-        
-        return new WaitForSecondsRealtime(0.1f);
     }
 }

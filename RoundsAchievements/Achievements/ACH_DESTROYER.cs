@@ -1,9 +1,12 @@
-public class ACH_DESTROYER : ACH
+namespace RoundsAchievements.Achievements
 {
-    public new const string AchievementName = "ACH_DESTROYER";
-
-    public new void AddListener(RoundsAchievements roundsAchievements)
+    public class ACH_DESTROYER : ACH
     {
-        // TODO: Implement
+        public new const string AchievementName = "ACH_DESTROYER";
+
+        public new void AddListener(RoundsAchievements roundsAchievements)
+        {
+            // TODO: Implement
+        }
     }
 }
