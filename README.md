@@ -9,4 +9,3 @@ These are achievements that are not currently implemented, if you'd like to impl
 - ACH_BEEKEEPER
 - ACH_HEALER
 - ACH_HYPERSONIC
-- ACH_SHIELDMASTERY
